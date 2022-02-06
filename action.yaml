@@ -53,6 +53,12 @@ runs:
       shell: bash
       run: |
         echo This was a pull request! Try to merge it to the target branch automatically.
+        
+        
+      - name: Checking if a branch exists
+      if: ${{ inputs.create_aggregated_branches_if_missed }}
+      shell: bash
+      run: git checkout -b deps/gha-maj
 
 # Verify some properties of the PR and also check that the target branch is enabled for auto-merging
 # For instance, by default we do not allow to automerge to "master"
